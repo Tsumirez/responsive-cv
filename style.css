@@ -1,17 +1,35 @@
+.dates-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.dates-display h2 {
+  grid-column: span 2;
+}
+.dates-display strong, .dates-display span {
+  font-weight: normal;
+  margin-top: 2rem;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-main {
+header, main, footer {
   max-width: 1520px;
-  margin: 1rem auto;
+  margin: 0 auto;
+}
+
+main {
   height: 300vh;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   background: linear-gradient(to right, #999 0% 30%, white 30%);
+}
+main section {
+  margin-top: 2rem;
 }
 
 main > section > ul {
@@ -21,7 +39,6 @@ main > section > ul {
 #contact-info {
   order: 1;
   width: 30%;
-  white-space: pre-line;
 }
 
 #languages {
@@ -46,7 +63,7 @@ main > section > ul {
 
 h1 {
   text-align: center;
-  color: #395;
+  color: #60c;
   order: 6;
   width: 60%;
 }
@@ -54,29 +71,27 @@ h1 {
 #work-experience {
   order: 7;
   width: 60%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 }
-
-#work-experience > strong, #work-experience > span {
-  font-weight: normal;
-  margin-top: 2rem;
+#work-experience div {
+  grid-column: 2;
 }
-
 #work-experience > strong > b {
   display: block;
-}
-
-#work-experience > div {
-  grid-column: 2;
 }
 
 #education {
   order: 8;
   width: 60%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem 0;
+}
+
+#projects {
+  order: 9;
+  width: 60%;
+}
+
+#courses {
+  order: 10;
+  width: 60%;
 }
 
 h3 {
