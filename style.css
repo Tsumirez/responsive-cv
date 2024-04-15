@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  max-width: 1520px;
+  margin: 1rem auto;
+  height: 300vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background: linear-gradient(to right, #999 0% 30%, white 30%);
+}
+
+main > section > ul {
+  list-style: none;
+}
+
+#contact-info {
+  order: 1;
+  width: 30%;
+  white-space: pre-line;
+}
+
+#languages {
+  order: 2;
+  width: 30%;
+}
+
+#front-end {
+  order: 3;
+  width: 30%;
+}
+
+#soft-skills {
+  order: 4;
+  width: 30%;
+}
+
+#hobbies {
+  order: 5;
+  width: 30%;
+}
+
+h1 {
+  text-align: center;
+  color: #395;
+  order: 6;
+  width: 60%;
+}
+
+#work-experience {
+  order: 7;
+  width: 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#work-experience > strong, #work-experience > span {
+  font-weight: normal;
+  margin-top: 2rem;
+}
+
+#work-experience > strong > b {
+  display: block;
+}
+
+#work-experience > div {
+  grid-column: 2;
+}
+
+#education {
+  order: 8;
+  width: 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem 0;
+}
+
+h3 {
+  grid-column: span 2;
+}
+
+#education > strong {
+  font-weight: normal;
+}
+
+#break1 {
+  flex-basis: 100%;
+  width: 0;
+  height: 0;
+  order: 5;
+}
+
+/*# sourceMappingURL=style.css.map */
