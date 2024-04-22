@@ -4,14 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
     <title>Document</title>
   </head>
   <body>
+    <!-- <header>
+
+      <h1>Józef Smelcerz</h1>
+      <h2>Front End Developer</h2>
+    </header> -->
     <main>
+      <img src="me.avif" alt="zdjęcie" id="profile-photo">
+
       <section id="contact-info">
         <h3>Dane kontaktowe:</h3>
         <ul>
-          <li>E-mail: tsumirez@zoho.com</li>
+          <li><a href="mailto:tsumirez@zoho.com">E-mail: tsumirez@zoho.com</a></li>
           <li>Telefon: 696 330 708</li>
           <li>Kraj: Polska</li>
           <li>Miasto: Bytom</li>
@@ -52,7 +62,7 @@
       </section>
       
       <section id="hobbies">
-        <h3>O mnie i moich zainteresowaniach:</h3>
+        <h3>O mnie i moich pasjach:</h3>
           <p>Jestem informatykiem, który
             nie boi się wyzwań i
             eksperymentów.</p>
@@ -77,9 +87,10 @@
           </p>
       </section>
 
-      <h1>Józef Smelcerz</h1>
+      <h1><span id="first-name">Józef</span> <span id="last-name">Smelcerz</span></h1>
 
       <section id="work-experience" class="dates-display">
+        <h3>Doświadzenie Zawodowe</h3>
         <span>08/2023 - 12/2023</span> <strong>Pracownik Ochrony Fizycznej <b>Solid Security S.A.</b></strong>
         <span>10/2022 - 03/2023</span> <strong>Front-End Developer <b>Infospread Polska Sp. z o.o.</b></strong>
         <div>Wdrożenie nowej strony landingowej wg projektu graficznego</div>
