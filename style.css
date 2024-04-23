@@ -39,7 +39,7 @@ img#profile-photo {
 }
 
 main {
-  height: 180vh;
+  height: 190vh;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
