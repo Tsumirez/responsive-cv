@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -327,6 +328,21 @@ main > * {
   }
   h3 > span {
     white-space: normal;
+  }
+}
+@media screen and (max-width: 240px) {
+  body {
+    background: url("fly.jpeg") center/contain no-repeat;
+    height: 320px;
+  }
+  body::before {
+    content: "Pułapka na muchy";
+    font: 2rem "Chakra Petch", serif;
+    text-align: center;
+    display: block;
+  }
+  body > * {
+    display: none;
   }
 }
 
