@@ -1,16 +1,24 @@
 .dates-display {
   display: grid;
-  grid-template-columns: 9fr 11fr;
+  grid-template-columns: 3fr 4fr;
+  column-gap: 2rem;
+  justify-content: center;
 }
-.dates-display strong, .dates-display span {
+.dates-display > * {
+  width: 94%;
+}
+.dates-display a {
+  color: #aaf;
+}
+.dates-display > strong, .dates-display > span {
   font-weight: normal;
   margin-top: 2rem;
   position: relative;
 }
-.dates-display strong, .dates-display div {
+.dates-display > strong, .dates-display div {
   color: #eee;
 }
-.dates-display span ~ span::before {
+.dates-display > span ~ span::before {
   content: "";
   width: 160%;
   position: absolute;
@@ -30,10 +38,13 @@ body {
   background: #eee;
   padding: 1rem 0;
   font: 1rem "Nunito-Sans", sans-serif;
+  --page-width: 1520px;
+  --col-one-width: 30%;
+  --col-two-width:70%;
 }
 
 header, main, footer {
-  max-width: 1520px;
+  max-width: var(--page-width);
   margin: 0 auto 2rem;
   box-shadow: 0.5rem 0.5rem 2rem #555;
   border: 1px solid #99b;
@@ -47,9 +58,8 @@ footer {
 img#profile-photo {
   width: 20%;
   border: 1px solid #000;
-  margin: 0 0 1rem 2rem;
   box-shadow: 0.25rem 0.25rem 0.75rem #777;
-  position: relative;
+  margin: 2rem 0 0 2rem;
 }
 
 main {
@@ -57,31 +67,31 @@ main {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  background: linear-gradient(to right, white 60%, transparent 60%), linear-gradient(to right, transparent 60%, rgba(0, 0, 0, 0.4)), linear-gradient(to bottom, #358, #025);
+  background-image: linear-gradient(to right, white 60%, transparent 60%), linear-gradient(to right, transparent 60%, rgba(0, 0, 0, 0.4)), linear-gradient(to bottom, #358, #025);
   align-content: start;
-  position: relative;
-  padding-top: 2rem;
 }
 main section {
   margin-top: 2rem;
+}
+main > section:not(#break1 ~ section) {
   padding: 0 2rem;
 }
 
 h1 {
   display: grid;
-  grid-template-columns: repeat(40, 1fr);
+  grid-template-columns: 3fr 4fr;
   order: 6;
   font: 200 calc(1.5rem + 4vw) "Dosis", sans-serif;
   line-height: calc(1.5rem + 4vw);
+  column-gap: 2rem;
+  margin-top: 2rem;
 }
 h1 #first-name {
   justify-self: end;
-  grid-column: 1/17;
   animation: show 2s;
   overflow: hidden;
 }
 h1 #last-name {
-  grid-column: 19/40;
   color: #eee;
   animation: show 2s;
   overflow: hidden;
@@ -91,12 +101,20 @@ h1 #last-name {
 
 a {
   text-decoration: none;
-  color: #fff;
-  text-shadow: 2px 0 #205, -2px 0 #205, 0 2px #205, 0 -2px #205, 1px 1px #205, -1px -1px #205, 1px -1px #205, -1px 1px #205;
+  position: relative;
+  color: #77b;
+  font: 500 1.1rem "Chakra Petch", sans-serif;
+  background: linear-gradient(to bottom, #0c7, #39f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 a:hover {
-  text-decoration: underline;
+  background: linear-gradient(to bottom, #0c7, #cc0);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 main > section > ul {
@@ -105,32 +123,26 @@ main > section > ul {
 
 #contact-info {
   order: 1;
-  width: 30%;
 }
 
 #languages {
   order: 2;
-  width: 30%;
 }
 
 #front-end {
   order: 3;
-  width: 30%;
 }
 
 #soft-skills {
   order: 4;
-  width: 30%;
 }
 
 #hobbies {
   order: 5;
-  width: 30%;
 }
 
 #work-experience {
   order: 7;
-  width: 70%;
 }
 #work-experience div {
   grid-column: 2;
@@ -141,30 +153,24 @@ main > section > ul {
 
 #education {
   order: 8;
-  width: 70%;
 }
 
 #projects {
   order: 9;
-  width: 70%;
 }
 
 #courses {
   order: 10;
-  width: 70%;
 }
 
 h3 {
   margin-bottom: 1rem;
   grid-column: span 2;
-  border: 1px solid black;
-  border-width: 1px 0;
+  display: flex;
   text-transform: uppercase;
   font: italic 600 1.2rem Dosis, sans-serif;
-  background: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%, rgba(255, 255, 255, 0.7));
   color: #eee;
   position: relative;
-  padding-left: 1rem;
 }
 h3::before {
   content: "";
@@ -178,15 +184,32 @@ h3::before {
 }
 h3::after {
   content: "";
-  rotate: -45deg;
-  position: absolute;
-  width: 80px;
-  height: 20px;
-  background-color: #fff;
+  flex-grow: 1;
+  border: 1px solid black;
+  border-width: 1px 0;
+  background-size: calc(var(--page-width) * 0.3 - 4rem) 100%;
+  background-position: right;
+  clip-path: polygon(0% 100%, 1.2rem 0%, 100% 0%, 100% 100%);
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 0.7), rgba(40, 60, 140, 0.8) 50%);
+}
+h3 > span {
+  border: 1px solid black;
+  border-width: 1px 0;
+  padding: 0 1.75rem 0 0.4rem;
+  background-size: calc(var(--page-width) * 0.3 - 4rem) 100%;
+  background-position: left;
+  clip-path: polygon(0% 100%, 0 0, 100% 0, calc(100% - 1.2rem) 100%);
+  background-image: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%, rgba(255, 255, 255, 0.7));
+  white-space: nowrap;
 }
 
-h1 ~ section > h3 {
-  background: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%, rgba(0, 0, 0, 0.7));
+h1 ~ section > h3::after {
+  background-size: calc(var(--page-width) * 0.7 - 4rem) 100%;
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(40, 60, 140, 0.8) 50%);
+}
+h1 ~ section > h3 > span {
+  background-size: calc(var(--page-width) * 0.7 - 4rem) 100%;
+  background-image: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%, rgba(0, 0, 0, 0.7));
 }
 
 #education > strong {
@@ -199,6 +222,13 @@ h1 ~ section > h3 {
   height: 0;
   order: 5;
 }
+#break1 ~ * {
+  width: var(--col-two-width);
+}
+
+main > * {
+  width: var(--col-one-width);
+}
 
 @keyframes show {
   0% {
@@ -206,6 +236,45 @@ h1 ~ section > h3 {
   }
   100% {
     max-width: 100%;
+  }
+}
+@media screen and (max-width: 1520px) {
+  body {
+    --page-width: 100vw;
+  }
+}
+@media screen and (max-width: 805px) {
+  main {
+    height: 230vh;
+  }
+}
+@media screen and (max-width: 660px) {
+  body {
+    --col-one-width:100%;
+    --col-two-width:100%;
+  }
+  main {
+    height: 305vh;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    background-image: linear-gradient(to right, white 40%, transparent 40%), linear-gradient(to right, transparent 60%, rgba(0, 0, 0, 0.4)), linear-gradient(to bottom, #358, #025);
+  }
+  main > *:nth-of-type(odd):not(#break1 ~ *) {
+    color: #eee;
+  }
+  main > img#profile-photo {
+    width: 75%;
+    order: 1;
+  }
+  h1 {
+    order: 0;
+    margin-bottom: 2rem;
+  }
+  #break1 {
+    display: none;
+  }
+  #break1 ~ * {
+    grid-column: span 2;
   }
 }
 
