@@ -14,11 +14,8 @@ body {
     --col-one-width: 30%;
     --col-two-width: 70%;
 
-    --h3-bright-gradient-right: linear-gradient(to left, rgba(255,255,255,0.7), rgba(40, 60, 140, 0.8) 50%); 
-    --h3-bright-gradient-left: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%,  rgba(255,255,255,0.7));
-
-    --h3-dark-gradient-right: linear-gradient(to left, rgba(0,0,0,0.7), rgba(40, 60, 140, 0.8) 50%);
-    --h3-dark-gradient-left: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%,  rgba(0,0,0,0.7));
+    --h3-bright-gradient: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%,  rgba(255,255,255,0.7));
+    --h3-dark-gradient: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%,  rgba(0,0,0,0.7));
 }
 
 header, main, footer {
@@ -220,12 +217,8 @@ h3 {
 }
 
 section.dates-display > h3 {
-    &::after {
-        background-image: var(--h3-dark-gradient-right)
-    }
-
-    &>span {
-        background-image: var(--h3-dark-gradient-left);
+    &::after, > span {
+        background-image: var(--h3-dark-gradient)
     }
 }
 
@@ -233,20 +226,6 @@ section.dates-display > h3 {
     font-weight: normal;
 }
 
-#break1 {
-    flex-basis:100%;
-    width:0;
-    height:0;
-    order: 5;
-
-    ~ * {
-        width:var(--col-two-width);
-    }
-}
-
-main > * {
-    width:var(--col-one-width);
-}
 
 @keyframes show {
     0% {
@@ -260,13 +239,8 @@ main > * {
 
 @media screen and (min-width: 661px) {
     section:not(.dates-display) > h3 {
-        > span {
-            background-image: var(--h3-bright-gradient-left);
-            background-size: calc((var(--page-width) * 0.3) - (2 * var(--first-col-section-padding))) 100%;
-        }
-
-        &::after {
-            background-image: var(--h3-bright-gradient-right);
+        > span, &::after {
+            background-image: var(--h3-bright-gradient);
             background-size: calc((var(--page-width) * 0.3) - (2 * var(--first-col-section-padding))) 100%;
         }
     }
@@ -275,6 +249,21 @@ main > * {
         > span, &::after {
             background-size: calc(var(--page-width) * 0.7 * .94) 100%;
         }
+    }
+
+    #break1 {
+        flex-basis:100%;
+        width:0;
+        height:0;
+        order: 5;
+    
+        ~ * {
+            width:var(--col-two-width);
+        }
+    }
+    
+    main > * {
+        width:var(--col-one-width);
     }
 }
 
@@ -342,14 +331,7 @@ main > * {
     main > section:not(.dates-display):nth-child(even) > h3 {
         > span, &::after {
             background-size: calc(var(--page-width) * 0.6) 100%;
-        }
-
-        > span {
-            background-image: var(--h3-dark-gradient-left);
-        }
-
-        &::after {
-            background-image: var(--h3-dark-gradient-right);
+            background-image: var(--h3-dark-gradient);
         }
     }
         
@@ -357,14 +339,7 @@ main > * {
     main > section:not(.dates-display):nth-child(odd) > h3 {
         > span, &::after {
             background-size: calc(var(--page-width) * 0.4 - (2 * var(--first-col-section-padding))) 100%;
-        }
-
-        > span {
-            background-image: var(--h3-bright-gradient-left);
-        }
-
-        &::after {
-            background-image: var(--h3-bright-gradient-right);
+            background-image: var(--h3-bright-gradient);
         }
     }
 
@@ -394,7 +369,7 @@ main > * {
     }
 }
 
-@media screen and (max-width: 240px) {
+@media screen and (max-width: 239px) {
     body {
         background: url('fly.jpeg') center/contain no-repeat;
         height:320px;

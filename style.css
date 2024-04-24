@@ -13,10 +13,8 @@ body {
   --first-col-section-padding: 2rem;
   --col-one-width: 30%;
   --col-two-width: 70%;
-  --h3-bright-gradient-right: linear-gradient(to left, rgba(255,255,255,0.7), rgba(40, 60, 140, 0.8) 50%);
-  --h3-bright-gradient-left: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%, rgba(255,255,255,0.7));
-  --h3-dark-gradient-right: linear-gradient(to left, rgba(0,0,0,0.7), rgba(40, 60, 140, 0.8) 50%);
-  --h3-dark-gradient-left: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%, rgba(0,0,0,0.7));
+  --h3-bright-gradient: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%, rgba(255,255,255,0.7));
+  --h3-dark-gradient: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%, rgba(0,0,0,0.7));
 }
 
 header, main, footer {
@@ -199,29 +197,12 @@ h3 > span {
   white-space: nowrap;
 }
 
-section.dates-display > h3::after {
-  background-image: var(--h3-dark-gradient-right);
-}
-section.dates-display > h3 > span {
-  background-image: var(--h3-dark-gradient-left);
+section.dates-display > h3::after, section.dates-display > h3 > span {
+  background-image: var(--h3-dark-gradient);
 }
 
 #education > strong {
   font-weight: normal;
-}
-
-#break1 {
-  flex-basis: 100%;
-  width: 0;
-  height: 0;
-  order: 5;
-}
-#break1 ~ * {
-  width: var(--col-two-width);
-}
-
-main > * {
-  width: var(--col-one-width);
 }
 
 @keyframes show {
@@ -233,16 +214,24 @@ main > * {
   }
 }
 @media screen and (min-width: 661px) {
-  section:not(.dates-display) > h3 > span {
-    background-image: var(--h3-bright-gradient-left);
-    background-size: calc(var(--page-width) * 0.3 - 2 * var(--first-col-section-padding)) 100%;
-  }
-  section:not(.dates-display) > h3::after {
-    background-image: var(--h3-bright-gradient-right);
+  section:not(.dates-display) > h3 > span, section:not(.dates-display) > h3::after {
+    background-image: var(--h3-bright-gradient);
     background-size: calc(var(--page-width) * 0.3 - 2 * var(--first-col-section-padding)) 100%;
   }
   section.dates-display > h3 > span, section.dates-display > h3::after {
     background-size: calc(var(--page-width) * 0.7 * 0.94) 100%;
+  }
+  #break1 {
+    flex-basis: 100%;
+    width: 0;
+    height: 0;
+    order: 5;
+  }
+  #break1 ~ * {
+    width: var(--col-two-width);
+  }
+  main > * {
+    width: var(--col-one-width);
   }
 }
 @media screen and (max-width: 1520px) {
@@ -295,21 +284,11 @@ main > * {
   }
   main > section:not(.dates-display):nth-child(even) > h3 > span, main > section:not(.dates-display):nth-child(even) > h3::after {
     background-size: calc(var(--page-width) * 0.6) 100%;
-  }
-  main > section:not(.dates-display):nth-child(even) > h3 > span {
-    background-image: var(--h3-dark-gradient-left);
-  }
-  main > section:not(.dates-display):nth-child(even) > h3::after {
-    background-image: var(--h3-dark-gradient-right);
+    background-image: var(--h3-dark-gradient);
   }
   main > section:not(.dates-display):nth-child(odd) > h3 > span, main > section:not(.dates-display):nth-child(odd) > h3::after {
     background-size: calc(var(--page-width) * 0.4 - 2 * var(--first-col-section-padding)) 100%;
-  }
-  main > section:not(.dates-display):nth-child(odd) > h3 > span {
-    background-image: var(--h3-bright-gradient-left);
-  }
-  main > section:not(.dates-display):nth-child(odd) > h3::after {
-    background-image: var(--h3-bright-gradient-right);
+    background-image: var(--h3-bright-gradient);
   }
   .dates-display h3 span, .dates-display h3::after {
     background-size: calc(var(--page-width) * 0.94) 100%;
@@ -330,7 +309,7 @@ main > * {
     white-space: normal;
   }
 }
-@media screen and (max-width: 240px) {
+@media screen and (max-width: 239px) {
   body {
     background: url("fly.jpeg") center/contain no-repeat;
     height: 320px;
