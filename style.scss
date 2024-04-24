@@ -84,16 +84,14 @@ a {
     text-decoration: none;
     color:#77b;
     font:500 1.1em "Chakra Petch", sans-serif;
-    background:linear-gradient(to bottom, #0c7, #39f);
+    background-image:linear-gradient(to bottom, #0c7, #39f);
     background-clip:text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
     &:hover {
-        background:linear-gradient(to bottom, #0c7 , #cc0);
-        background-clip:text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        background-image:linear-gradient(to bottom, #0c7 , #cc0);
+        // text-decoration: underline;
     }
 }
 
@@ -237,7 +235,38 @@ section.dates-display > h3 {
     }
 }
 
-@media screen and (min-width: 661px) {
+@media print {
+    main {
+        height:35cm;
+    }
+
+    main,footer {
+        width: 21cm;
+    }
+
+    body {
+        font-size:80%;
+        padding:0;
+        background: unset;
+    }
+
+    a {
+        background:none;
+        background-clip:unset;
+        -webkit-background-clip: unset;
+        -webkit-text-fill-color: unset;
+    }
+
+    .dates-display > strong, .dates-display > span {
+        margin-top: 1rem;
+    }
+
+    .dates-display > span ~ span::before {
+        top:-.80rem;
+    }
+}
+
+@media screen,print and (min-width: 661px) {
     section:not(.dates-display) > h3 {
         > span, &::after {
             background-image: var(--h3-bright-gradient);
