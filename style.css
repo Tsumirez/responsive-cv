@@ -10,11 +10,11 @@ body {
   padding: 1rem 0;
   font: 1rem "Nunito-Sans", sans-serif;
   --page-width: 1520px;
-  --first-col-section-padding: 2rem;
-  --col-one-width: 30%;
-  --col-two-width: 70%;
   --h3-bright-gradient: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%, rgba(255,255,255,0.7));
   --h3-dark-gradient: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%, rgba(0,0,0,0.7));
+  --date-grid-cols: 2/15;
+  --description-grid-cols: 16/35;
+  --first-last-name-spacing: calc(.5rem + .5vw);
 }
 
 header, main, footer {
@@ -26,46 +26,45 @@ header, main, footer {
 
 footer {
   background-color: #fff;
-  padding: 0.25rem 2rem;
+  padding: 0.25rem 2%;
 }
 
 img#profile-photo {
   width: 20%;
   border: 1px solid #000;
   box-shadow: 0.25rem 0.25rem 0.75rem #777;
-  margin: 2rem 0 0 2rem;
+  margin: 2% 0 0 2%;
 }
 
 main {
-  height: 190vh;
+  height: 120rem;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   background-image: linear-gradient(to right, white 60%, transparent 60%), linear-gradient(to right, transparent 60%, rgba(0, 0, 0, 0.4)), linear-gradient(to bottom, #358, #025);
 }
-main section {
+main > section, main h1 {
   margin-top: 2rem;
+  display: grid;
+  align-content: start;
 }
-main > section:not(#break1 ~ section) {
-  padding: 0 var(--first-col-section-padding);
+main > section:not(.dates-display) > * {
+  grid-column: 2/-2;
 }
 
 h1 {
-  display: grid;
-  grid-template-columns: 3fr 4fr;
   order: 6;
+  grid-template-columns: 3fr 4fr;
   font: 200 calc(1.5rem + 4vw)/calc(1.5rem + 4vw) "Dosis", sans-serif;
-  column-gap: 2rem;
-  margin-top: 2rem;
 }
 h1 #first-name, h1 #last-name {
   animation: show 2s;
   overflow: hidden;
+  margin: 0 var(--first-last-name-spacing);
 }
 h1 #first-name {
   justify-self: end;
   animation: show 2s;
-  overflow: hidden;
 }
 h1 #last-name {
   color: #eee;
@@ -74,8 +73,8 @@ h1 #last-name {
 }
 
 a {
-  text-decoration: none;
   color: #77b;
+  text-decoration: none;
   font: 500 1.1em "Chakra Petch", sans-serif;
   background-image: linear-gradient(to bottom, #0c7, #39f);
   background-clip: text;
@@ -91,22 +90,24 @@ ul {
 }
 
 .dates-display {
-  display: grid;
-  grid-template-columns: 3fr 4fr;
-  column-gap: 2rem;
+  grid-template-columns: repeat(35, 1fr);
+  row-gap: 2rem;
 }
-.dates-display > * {
-  width: 94%;
-}
-.dates-display > strong, .dates-display > span {
-  font-weight: normal;
-  margin-top: 2rem;
+.dates-display > time {
+  grid-column: var(--date-grid-cols);
   position: relative;
 }
-.dates-display > strong, .dates-display div {
-  color: #eee;
+.dates-display > h3 {
+  grid-column: 2/-2;
 }
-.dates-display > span ~ span::before {
+.dates-display > div {
+  color: #eee;
+  grid-column: var(--description-grid-cols);
+}
+.dates-display > div b {
+  display: block;
+}
+.dates-display > time ~ time::before {
   content: "";
   width: 160%;
   position: absolute;
@@ -139,12 +140,6 @@ ul {
 #work-experience {
   order: 7;
 }
-#work-experience div {
-  grid-column: 2;
-}
-#work-experience > strong > b {
-  display: block;
-}
 
 #education {
   order: 8;
@@ -160,7 +155,7 @@ ul {
 
 h3 {
   margin-bottom: 1rem;
-  grid-column: span 2;
+  grid-column: 2/-2;
   display: flex;
   text-transform: uppercase;
   font: italic 600 1.2em Dosis, sans-serif;
@@ -180,26 +175,22 @@ h3::before {
 h3::after {
   content: "";
   flex-grow: 1;
-  border: 1px solid black;
-  border-width: 1px 0;
   background-position: right;
   clip-path: polygon(0% 100%, 1.2rem 0%, 100% 0%, 100% 100%);
 }
 h3 > span {
-  border: 1px solid black;
-  border-width: 1px 0;
   padding: 0 1.75rem 0 0.4rem;
   background-position: left;
   clip-path: polygon(0% 100%, 0 0, 100% 0, calc(100% - 1.2rem) 100%);
   white-space: nowrap;
 }
+h3::after, h3 > span {
+  border: 1px solid black;
+  border-width: 1px 0;
+}
 
 section.dates-display > h3::after, section.dates-display > h3 > span {
   background-image: var(--h3-dark-gradient);
-}
-
-#education > strong {
-  font-weight: normal;
 }
 
 @keyframes show {
@@ -212,7 +203,7 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
 }
 @media print {
   main {
-    height: 35cm;
+    height: 43cm;
   }
   main, footer {
     width: 21cm;
@@ -228,20 +219,26 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
     -webkit-background-clip: unset;
     -webkit-text-fill-color: unset;
   }
-  .dates-display > strong, .dates-display > span {
-    margin-top: 1rem;
-  }
-  .dates-display > span ~ span::before {
+  .dates-display > time ~ time::before {
     top: -0.8rem;
   }
 }
-@media screen, print and (min-width: 661px) {
-  section:not(.dates-display) > h3 > span, section:not(.dates-display) > h3::after {
+@media screen and (min-width: 661px), print {
+  section:not(.dates-display) {
+    grid-template-columns: repeat(15, 1fr);
+  }
+  section:not(.dates-display) h3 > span, section:not(.dates-display) h3::after {
     background-image: var(--h3-bright-gradient);
-    background-size: calc(var(--page-width) * 0.3 - 2 * var(--first-col-section-padding)) 100%;
+    background-size: calc(var(--page-width) * 0.3) 100%;
+  }
+  section.dates-display {
+    width: 70%;
   }
   section.dates-display > h3 > span, section.dates-display > h3::after {
-    background-size: calc(var(--page-width) * 0.7 * 0.94) 100%;
+    background-size: calc(var(--page-width) * 0.7 * 33 / 35) 100%;
+  }
+  section.dates-display > div {
+    padding-left: var(--first-last-name-spacing);
   }
   #break1 {
     flex-basis: 100%;
@@ -249,11 +246,8 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
     height: 0;
     order: 5;
   }
-  #break1 ~ * {
-    width: var(--col-two-width);
-  }
-  main > * {
-    width: var(--col-one-width);
+  main > :not(h1, .dates-display) {
+    width: 30%;
   }
 }
 @media screen and (max-width: 1520px) {
@@ -263,16 +257,15 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
 }
 @media screen and (max-width: 825px) {
   main {
-    height: 200vh;
+    height: 135rem;
   }
 }
 @media screen and (max-width: 660px) {
   body {
-    --col-one-width:100%;
-    --col-two-width:100%;
-    --first-col-section-padding: .5rem;
     overflow-wrap: break-word;
     padding: 0;
+    --date-grid-cols: 2/20;
+    --description-grid-cols: 22/50;
   }
   main {
     height: auto;
@@ -282,26 +275,27 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
     padding-bottom: 1rem;
     background-image: linear-gradient(to right, white 40%, transparent 40%), linear-gradient(to right, transparent 60%, rgba(0, 0, 0, 0.4)), linear-gradient(to bottom, #358, #025);
   }
-  main > *:nth-child(even):not(.dates-display) {
+  main > section:nth-child(even):not(.dates-display) {
+    grid-template-columns: repeat(30, 1fr);
     color: #eee;
   }
-  .dates-display, h1 {
-    justify-items: center;
+  main > section:nth-child(odd):not(.dates-display) {
+    grid-template-columns: repeat(20, 1fr);
+  }
+  .dates-display {
     grid-column: span 2;
-    grid-template-columns: 2fr 3fr;
-    column-gap: 1rem;
+    grid-template-columns: repeat(50, 1fr);
   }
   h1 {
     order: 0;
     white-space: nowrap;
-  }
-  h1 #first-name {
-    color: #000;
+    grid-column: 1/-1;
+    grid-template-columns: 2fr 3fr;
   }
   main > img#profile-photo {
     width: 75%;
     order: 1;
-    margin: 2rem 0 0;
+    margin-top: 2rem;
     justify-self: center;
   }
   main > section:not(.dates-display):nth-child(even) > h3 > span, main > section:not(.dates-display):nth-child(even) > h3::after {
@@ -309,7 +303,7 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
     background-image: var(--h3-dark-gradient);
   }
   main > section:not(.dates-display):nth-child(odd) > h3 > span, main > section:not(.dates-display):nth-child(odd) > h3::after {
-    background-size: calc(var(--page-width) * 0.4 - 2 * var(--first-col-section-padding)) 100%;
+    background-size: calc(var(--page-width) * 0.4) 100%;
     background-image: var(--h3-bright-gradient);
   }
   .dates-display h3 span, .dates-display h3::after {
@@ -317,9 +311,6 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
   }
   #break1 {
     display: none;
-  }
-  footer {
-    padding: 0.25rem 1rem;
   }
 }
 @media screen and (max-width: 420px) {
