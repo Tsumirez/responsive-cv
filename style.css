@@ -31,6 +31,7 @@ footer {
 
 img#profile-photo {
   width: 20%;
+  max-width: 300px;
   border: 1px solid #000;
   box-shadow: 0.25rem 0.25rem 0.75rem #777;
   margin: 2% 0 0 2%;
@@ -93,33 +94,17 @@ ul > li a {
   display: inline-block;
   margin: -0.25rem 0;
 }
+ul > li {
+  line-height: 1.2rem;
+}
 
-.dates-display {
-  grid-template-columns: repeat(35, 1fr);
-  row-gap: 1rem;
-}
-.dates-display > time {
-  grid-column: var(--date-grid-cols);
-  position: relative;
-}
-.dates-display > h3 {
-  grid-column: 2/-2;
-}
-.dates-display > div {
-  color: #eee;
-  grid-column: var(--description-grid-cols);
-}
-.dates-display > div b {
-  display: block;
-}
-.dates-display > time ~ time::before {
-  content: "";
-  width: 160%;
-  position: absolute;
-  height: 0.125rem;
-  background: linear-gradient(to right, #337, #99b);
-  border-radius: 50%;
-  top: -0.8rem;
+ul > li::before {
+  white-space: pre;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border: 0 none;
+  background-image: linear-gradient(to bottom, #555, #35d);
 }
 
 #contact-info {
@@ -129,13 +114,29 @@ ul > li a {
 #languages {
   order: 2;
 }
+#languages li > * {
+  vertical-align: middle;
+}
+#languages ul > li::before {
+  content: "✔ ";
+}
 
 #front-end {
   order: 3;
 }
+#front-end li > * {
+  vertical-align: middle;
+}
+#front-end ul > li::before {
+  content: "⚒ ";
+}
 
 #soft-skills {
   order: 4;
+}
+#soft-skills ul > li::before {
+  content: "❦ ";
+  font-size: 1.2em;
 }
 
 #hobbies {
@@ -193,6 +194,34 @@ h3::after, h3 > span {
   border-width: 1px 0;
 }
 
+.dates-display {
+  grid-template-columns: repeat(35, 1fr);
+  row-gap: 1rem;
+}
+.dates-display > time {
+  grid-column: var(--date-grid-cols);
+  position: relative;
+}
+.dates-display > h3 {
+  grid-column: 2/-2;
+}
+.dates-display > div {
+  color: #eee;
+  grid-column: var(--description-grid-cols);
+}
+.dates-display > div b {
+  display: block;
+}
+.dates-display > time ~ time::before {
+  content: "";
+  width: 160%;
+  position: absolute;
+  height: 0.125rem;
+  background: linear-gradient(to right, #337, #99b);
+  border-radius: 50%;
+  top: -0.8rem;
+}
+
 section.dates-display > h3::after, section.dates-display > h3 > span {
   background-image: var(--h3-dark-gradient);
 }
@@ -209,13 +238,22 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
   main {
     height: 32cm;
   }
+  main > section {
+    margin-top: 1rem;
+    line-height: 1rem;
+  }
+  main h1 {
+    font-size: 3.5rem;
+  }
   main, footer {
     width: 21cm;
+    margin-bottom: 1rem;
   }
   body {
-    font-size: 80%;
+    font-size: 10pt;
     padding: 0;
     background: unset;
+    letter-spacing: -0.01rem;
   }
   a {
     background: none;
@@ -223,8 +261,18 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
     -webkit-background-clip: unset;
     -webkit-text-fill-color: unset;
   }
+  ul > li::before {
+    color: #42b;
+    background: none;
+    background-clip: unset;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+  }
+  .dates-display {
+    row-gap: 0.75rem;
+  }
   .dates-display > time ~ time::before {
-    top: -0.8rem;
+    top: -0.6rem;
   }
 }
 @media screen and (min-width: 661px), print {
@@ -283,6 +331,9 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
     grid-template-columns: repeat(30, 1fr);
     color: #eee;
   }
+  main > section:nth-child(even):not(.dates-display) > ul > li::before {
+    background-image: linear-gradient(to bottom, #fff, #99f);
+  }
   main > section:nth-child(odd):not(.dates-display) {
     grid-template-columns: repeat(20, 1fr);
   }
@@ -297,7 +348,7 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
     grid-template-columns: 2fr 3fr;
   }
   main > img#profile-photo {
-    width: 75%;
+    width: 90%;
     order: 1;
     margin-top: 2rem;
     justify-self: center;

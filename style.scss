@@ -49,6 +49,7 @@ footer {
 
 img#profile-photo {
     width: 20%;
+    max-width: 300px;
     border: 1px solid #000;
     box-shadow: 0.25rem 0.25rem 0.75rem #777;
     margin: 2% 0 0 2%;
@@ -117,41 +118,23 @@ ul {
         display:inline-block;
         margin: -.25rem 0;
     }
+
+    > li {
+        line-height: 1.2rem;
+    }
 }
-//---------------&&&&!!!!!
-.dates-display {
-    grid-template-columns: repeat(35, 1fr);
-    row-gap: 1rem;
 
-    > time {
-        grid-column: var(--date-grid-cols);
-        position: relative;
-    }
 
-    > h3 {
-        grid-column: 2/-2;
-    }
-
-    > div {
-        color:#eee;
-        // padding-left: .5rem;
-        grid-column: var(--description-grid-cols);
-
-        b {
-            display: block;
-        }
-    }
-//---------------&&&&!!!!!
-
-    > time~time::before {
-        content: "";
-        width:160%;
-        position: absolute;
-        height:0.125rem;
-        background: linear-gradient(to right, #337, #99b);
-        border-radius:50%;
-        top:-.8rem;
-    }
+ul > li::before {
+    // font-size: 1.2em;
+    white-space: pre;
+    background-clip:text;
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    border: 0 none;
+    background-image:linear-gradient(to bottom, #555, #35d);
+    // display: none;
+    // font-weight: bold;
 }
 
 #contact-info {
@@ -160,14 +143,38 @@ ul {
 
 #languages {
     order:2;
+    li > * {
+        vertical-align: middle;
+    }
+
+    ul > li::before {
+        // content:"\1FAB6  ";
+        content:"\2714  ";
+        // background-image:linear-gradient(to bottom, #555, #35d);
+    }
 }
 
 #front-end {
     order:3;
+
+    li > * {
+        vertical-align: middle;
+    }
+
+    ul > li::before {
+        // content:"\2714  ";
+        content:"\2692  ";
+        // background-image:linear-gradient(to bottom, #000, #52f);
+    }
 }
 
 #soft-skills {
     order:4;
+    ul > li::before {
+        content:"\2766  ";
+        font-size: 1.2em;
+        // background-image:linear-gradient(to bottom, #000, #25d);
+    }
 }
 
 #hobbies {
@@ -231,6 +238,40 @@ h3 {
     }
 }
 
+.dates-display {
+    grid-template-columns: repeat(35, 1fr);
+    row-gap: 1rem;
+
+    > time {
+        grid-column: var(--date-grid-cols);
+        position: relative;
+    }
+
+    > h3 {
+        grid-column: 2/-2;
+    }
+
+    > div {
+        color:#eee;
+        // padding-left: .5rem;
+        grid-column: var(--description-grid-cols);
+
+        b {
+            display: block;
+        }
+    }
+
+    > time~time::before {
+        content: "";
+        width:160%;
+        position: absolute;
+        height:0.125rem;
+        background: linear-gradient(to right, #337, #99b);
+        border-radius:50%;
+        top:-.8rem;
+    }
+}
+
 section.dates-display > h3 {
     &::after, > span {
         background-image: var(--h3-dark-gradient)
@@ -250,16 +291,29 @@ section.dates-display > h3 {
 @media print {
     main {
         height:32cm;
+
+        > section {
+            margin-top: 1rem;
+            line-height: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+        // padding-bottom: 1rem;
     }
 
     main,footer {
         width: 21cm;
+        margin-bottom: 1rem;
+
     }
 
     body {
-        font-size:80%;
+        font-size:10pt;
         padding:0;
         background: unset;
+        letter-spacing: -0.01rem;
     }
 
     a {
@@ -269,8 +323,20 @@ section.dates-display > h3 {
         -webkit-text-fill-color: unset;
     }
 
-    .dates-display > time ~ time::before {
-        top:-.80rem;
+    ul > li::before {
+        color:#42b;
+        background:none;
+        background-clip:unset;
+        -webkit-background-clip: unset;
+        -webkit-text-fill-color: unset;
+    }
+
+    .dates-display {
+        row-gap:.75rem;
+        
+        > time ~ time::before {
+            top:-.6rem;
+        }
     }
 }
 
@@ -344,6 +410,10 @@ section.dates-display > h3 {
         > section:nth-child(even):not(.dates-display) {
             grid-template-columns: repeat(30, 1fr);
             color:#eee;
+
+            > ul > li::before {
+                background-image:linear-gradient(to bottom, #fff,#99f)
+            }
         }
 
         > section:nth-child(odd):not(.dates-display) {
@@ -364,7 +434,7 @@ section.dates-display > h3 {
     }
 
     main> img#profile-photo {
-        width:75%;
+        width:90%;
         order:1;
         margin-top:2rem;
         justify-self: center;
