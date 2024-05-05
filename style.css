@@ -85,6 +85,9 @@ a {
 a:hover {
   background-image: linear-gradient(to bottom, #0c7, #cc0);
 }
+a::after {
+  content: attr(link-text);
+}
 
 ul {
   list-style: none;
@@ -166,7 +169,6 @@ h3 {
   font: italic 600 1.2em Dosis, sans-serif;
   color: #eee;
   position: relative;
-  text-shadow: 0 0 2px #ddd, 0 0 1px #fff;
 }
 h3::before {
   content: "";
@@ -198,7 +200,6 @@ h3::after, h3 > span {
 .dates-display {
   grid-template-columns: repeat(35, 1fr);
   row-gap: 1rem;
-  width: 70%;
 }
 .dates-display > time {
   grid-column: var(--date-grid-cols);
@@ -236,10 +237,6 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
     max-width: 100%;
   }
 }
-main > :not(h1, .dates-display) {
-  width: 30%;
-}
-
 @media print {
   main {
     height: 32cm;
@@ -249,6 +246,7 @@ main > :not(h1, .dates-display) {
     line-height: 1rem;
   }
   main h1 {
+    margin-top: 1rem;
     font-size: 3.5rem;
     grid-template-columns: 2fr 4fr;
   }
@@ -269,6 +267,9 @@ main > :not(h1, .dates-display) {
     background-clip: unset;
     -webkit-background-clip: unset;
     -webkit-text-fill-color: unset;
+  }
+  a::after {
+    content: attr(link-text);
   }
   ul > li::before {
     color: #42b;
@@ -293,10 +294,14 @@ main > :not(h1, .dates-display) {
 @media screen and (min-width: 661px), print {
   section:not(.dates-display) {
     grid-template-columns: repeat(15, 1fr);
+    width: 30%;
   }
   section:not(.dates-display) h3 > span, section:not(.dates-display) h3::after {
     background-image: var(--h3-bright-gradient);
     background-size: calc(var(--page-width) * 0.3) 100%;
+  }
+  section.dates-display {
+    width: 70%;
   }
   section.dates-display > h3 > span, section.dates-display > h3::after {
     background-size: calc(var(--page-width) * 0.7 * 33 / 35) 100%;
