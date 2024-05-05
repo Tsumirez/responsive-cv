@@ -7,7 +7,7 @@
 body {
     background:#eee;
     padding:1rem 0;
-    font: 1rem "Nunito-Sans", sans-serif;
+    font: 1rem "Ubuntu Sans", sans-serif;
 
     --page-width: 1520px;
     --h3-bright-gradient: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%,  rgba(255,255,255,0.7));
@@ -45,11 +45,23 @@ footer {
 //         width: 60%;
 //         height: 50%;
 //     }
+
+//     &::after {
+//         content:"";
+//         bottom:0;
+//         right:0;
+//         position: absolute;
+
+//         border: 1px solid black;
+//         border-width: 0 1px 1px 0;
+//         width: 60%;
+//         height: 50%;
+//     }
 // }
 
 img#profile-photo {
     width: 20%;
-    max-width: 300px;
+    max-width: 302px;
     border: 1px solid #000;
     box-shadow: 0.25rem 0.25rem 0.75rem #777;
     margin: 2% 0 0 2%;
@@ -206,6 +218,7 @@ h3 {
     font: italic 600 1.2em Dosis, sans-serif;
     color: #eee;
     position: relative;
+    text-shadow: 0 0 2px #ddd, 0 0 1px #fff;
 
     &::before {
         content:"";
@@ -241,6 +254,7 @@ h3 {
 .dates-display {
     grid-template-columns: repeat(35, 1fr);
     row-gap: 1rem;
+    width:70%;
 
     > time {
         grid-column: var(--date-grid-cols);
@@ -288,6 +302,12 @@ section.dates-display > h3 {
     }
 }
 
+main > :not(h1, .dates-display) {
+    width: 30%;
+}
+
+
+//PRINT ONLY STYLES
 @media print {
     main {
         height:32cm;
@@ -299,6 +319,7 @@ section.dates-display > h3 {
 
         h1 {
             font-size: 3.5rem;
+            grid-template-columns: 2fr 4fr;
         }
         // padding-bottom: 1rem;
     }
@@ -314,6 +335,9 @@ section.dates-display > h3 {
         padding:0;
         background: unset;
         letter-spacing: -0.01rem;
+
+        --description-grid-cols: 11/30;
+        --date-grid-cols:2/10;
     }
 
     a {
@@ -332,11 +356,18 @@ section.dates-display > h3 {
     }
 
     .dates-display {
+        grid-template-columns: repeat(30, 1fr);
         row-gap:.75rem;
+        width: 60%;
         
         > time ~ time::before {
             top:-.6rem;
         }
+    }
+
+    main > :not(h1, .dates-display) {
+        width: 40%;
+        grid-template-columns: repeat(20,1fr);
     }
 }
 
@@ -352,7 +383,6 @@ section.dates-display > h3 {
     }
 
     section.dates-display {
-        width:70%;
 
         > h3 {
             > span, &::after {
@@ -370,10 +400,6 @@ section.dates-display > h3 {
         width:0;
         height:0;
         order: 5;
-    }
-    
-    main > :not(h1, .dates-display) {
-        width: 30%;
     }
 }
 

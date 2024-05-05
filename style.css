@@ -8,7 +8,7 @@
 body {
   background: #eee;
   padding: 1rem 0;
-  font: 1rem "Nunito-Sans", sans-serif;
+  font: 1rem "Ubuntu Sans", sans-serif;
   --page-width: 1520px;
   --h3-bright-gradient: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%, rgba(255,255,255,0.7));
   --h3-dark-gradient: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%, rgba(0,0,0,0.7));
@@ -31,7 +31,7 @@ footer {
 
 img#profile-photo {
   width: 20%;
-  max-width: 300px;
+  max-width: 302px;
   border: 1px solid #000;
   box-shadow: 0.25rem 0.25rem 0.75rem #777;
   margin: 2% 0 0 2%;
@@ -166,6 +166,7 @@ h3 {
   font: italic 600 1.2em Dosis, sans-serif;
   color: #eee;
   position: relative;
+  text-shadow: 0 0 2px #ddd, 0 0 1px #fff;
 }
 h3::before {
   content: "";
@@ -197,6 +198,7 @@ h3::after, h3 > span {
 .dates-display {
   grid-template-columns: repeat(35, 1fr);
   row-gap: 1rem;
+  width: 70%;
 }
 .dates-display > time {
   grid-column: var(--date-grid-cols);
@@ -234,6 +236,10 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
     max-width: 100%;
   }
 }
+main > :not(h1, .dates-display) {
+  width: 30%;
+}
+
 @media print {
   main {
     height: 32cm;
@@ -244,6 +250,7 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
   }
   main h1 {
     font-size: 3.5rem;
+    grid-template-columns: 2fr 4fr;
   }
   main, footer {
     width: 21cm;
@@ -254,6 +261,8 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
     padding: 0;
     background: unset;
     letter-spacing: -0.01rem;
+    --description-grid-cols: 11/30;
+    --date-grid-cols:2/10;
   }
   a {
     background: none;
@@ -269,10 +278,16 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
     -webkit-text-fill-color: unset;
   }
   .dates-display {
+    grid-template-columns: repeat(30, 1fr);
     row-gap: 0.75rem;
+    width: 60%;
   }
   .dates-display > time ~ time::before {
     top: -0.6rem;
+  }
+  main > :not(h1, .dates-display) {
+    width: 40%;
+    grid-template-columns: repeat(20, 1fr);
   }
 }
 @media screen and (min-width: 661px), print {
@@ -282,9 +297,6 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
   section:not(.dates-display) h3 > span, section:not(.dates-display) h3::after {
     background-image: var(--h3-bright-gradient);
     background-size: calc(var(--page-width) * 0.3) 100%;
-  }
-  section.dates-display {
-    width: 70%;
   }
   section.dates-display > h3 > span, section.dates-display > h3::after {
     background-size: calc(var(--page-width) * 0.7 * 33 / 35) 100%;
@@ -297,9 +309,6 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
     width: 0;
     height: 0;
     order: 5;
-  }
-  main > :not(h1, .dates-display) {
-    width: 30%;
   }
 }
 @media screen and (max-width: 1520px) {
