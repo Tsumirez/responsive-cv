@@ -223,7 +223,7 @@ h3 {
     font: italic 600 1.2em Dosis, sans-serif;
     color: #eee;
     position: relative;
-    // text-shadow: 0 0 1px #fff, 0 0 1px #fff;
+    text-shadow: 0 0 1px #fff, 0 0 1px #fff;
 
     &::before {
         content:"";
