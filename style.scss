@@ -135,10 +135,6 @@ ul {
         display:inline-block;
         margin: -.25rem 0;
     }
-
-    > li {
-        line-height: 1.2rem;
-    }
 }
 
 
@@ -223,7 +219,7 @@ h3 {
     font: italic 600 1.2em Dosis, sans-serif;
     color: #eee;
     position: relative;
-    text-shadow: 0 0 1px #fff, 0 0 1px #fff;
+    // text-shadow: 0 0 1px #fff, 0 0 1px #fff;
 
     &::before {
         content:"";
@@ -320,7 +316,8 @@ section.dates-display > h3 {
         h1 {
             margin-top: 1rem;
             font-size: 3.5rem;
-            grid-template-columns: 2fr 4fr;
+            grid-template-columns: 3fr 4fr;
+            line-height: calc(1rem + 4vw);
         }
         // padding-bottom: 1rem;
     }
@@ -337,8 +334,8 @@ section.dates-display > h3 {
         background: unset;
         letter-spacing: -0.01rem;
 
-        --description-grid-cols: 11/30;
-        --date-grid-cols:2/10;
+        // --description-grid-cols: 11/30;
+        // --date-grid-cols:2/10;
     }
 
     a {
@@ -361,18 +358,18 @@ section.dates-display > h3 {
     }
 
     .dates-display {
-        grid-template-columns: repeat(30, 1fr);
-        row-gap:.75rem;
-        width: 60%;
+        grid-template-columns: repeat(35, 1fr);
+        row-gap:.55rem;
+        width: 70%;
         
         > time ~ time::before {
-            top:-.6rem;
+            top:-.5rem;
         }
     }
 
     main > :not(h1, .dates-display) {
-        width: 40%;
-        grid-template-columns: repeat(20,1fr);
+        width: 30%;
+        grid-template-columns: repeat(15,1fr);
     }
 }
 
