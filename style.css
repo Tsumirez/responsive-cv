@@ -10,14 +10,24 @@ body {
   padding: 1rem 0;
   font: 1rem "Ubuntu Sans", sans-serif;
   --page-width: 1520px;
-  --h3-bright-gradient: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%, rgba(255,255,255,0.7));
-  --h3-dark-gradient: linear-gradient(to right, rgba(40, 60, 140, 0.8) 50%, rgba(0,0,0,0.7));
+  --h3-bright-gradient: linear-gradient(
+    to right,
+    rgba(40, 60, 140, 0.8) 50%,
+    rgba(255, 255, 255, 0.7)
+  );
+  --h3-dark-gradient: linear-gradient(
+    to right,
+    rgba(40, 60, 140, 0.8) 50%,
+    rgba(0, 0, 0, 0.7)
+  );
   --date-grid-cols: 2/15;
   --description-grid-cols: 16/35;
-  --first-last-name-spacing: calc(.5rem + .5vw);
+  --first-last-name-spacing: calc(0.5rem + 0.5vw);
 }
 
-header, main, footer {
+header,
+main,
+footer {
   max-width: var(--page-width);
   margin: 0 auto 2rem;
   box-shadow: 0.5rem 0.5rem 2rem #555;
@@ -38,13 +48,14 @@ img#profile-photo {
 }
 
 main {
-  height: 95rem;
+  height: 100rem;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   background-image: linear-gradient(to right, white 60%, transparent 60%), linear-gradient(to right, transparent 60%, rgba(0, 0, 0, 0.4)), linear-gradient(to bottom, #358, #025);
 }
-main > section, main h1 {
+main > section,
+main h1 {
   margin-top: 2rem;
   display: grid;
   align-content: start;
@@ -58,7 +69,8 @@ h1 {
   grid-template-columns: 3fr 4fr;
   font: 200 calc(1.5rem + 4vw)/calc(1.5rem + 4vw) "Dosis", sans-serif;
 }
-h1 #first-name, h1 #last-name {
+h1 #first-name,
+h1 #last-name {
   animation: show 2s;
   overflow: hidden;
   margin: 0 var(--first-last-name-spacing);
@@ -189,7 +201,8 @@ h3 > span {
   clip-path: polygon(0% 100%, 0 0, 100% 0, calc(100% - 1.2rem) 100%);
   white-space: nowrap;
 }
-h3::after, h3 > span {
+h3::after,
+h3 > span {
   border: 1px solid black;
   border-width: 1px 0;
 }
@@ -222,7 +235,8 @@ h3::after, h3 > span {
   top: -0.8rem;
 }
 
-section.dates-display > h3::after, section.dates-display > h3 > span {
+section.dates-display > h3::after,
+section.dates-display > h3 > span {
   background-image: var(--h3-dark-gradient);
 }
 
@@ -248,7 +262,8 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
     grid-template-columns: 3fr 4fr;
     line-height: calc(1rem + 4vw);
   }
-  main, footer {
+  main,
+  footer {
     width: 21cm;
     margin-bottom: 1rem;
   }
@@ -292,7 +307,8 @@ section.dates-display > h3::after, section.dates-display > h3 > span {
     grid-template-columns: repeat(15, 1fr);
     width: 30%;
   }
-  section:not(.dates-display) h3 > span, section:not(.dates-display) h3::after {
+  section:not(.dates-display) h3 > span,
+  section:not(.dates-display) h3::after {
     background-image: var(--h3-bright-gradient);
     background-size: calc(var(--page-width) * 0.3) 100%;
   }
