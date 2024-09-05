@@ -38,6 +38,7 @@ footer {
 footer {
   background-color: #fff;
   padding: 0.25rem 2%;
+  font-size: 80%;
 }
 
 // main > div:first-child {
@@ -91,6 +92,10 @@ main {
     margin-top: 2rem;
     display: grid;
     align-content: start;
+
+    // &+section {
+    //   margin-top: 0;
+    // }
   }
 
   > section:not(.dates-display) > * {
@@ -319,7 +324,8 @@ section.dates-display > h3 {
 //PRINT ONLY STYLES
 @media print {
   main {
-    height: 32cm;
+     height: 85rem;
+
 
     > section {
       margin-top: 1rem;
@@ -327,7 +333,7 @@ section.dates-display > h3 {
     }
 
     h1 {
-      margin-top: 1rem;
+      margin-top: 0rem;
       font-size: 3.5rem;
       grid-template-columns: 3fr 4fr;
       line-height: calc(1rem + 4vw);
@@ -338,7 +344,6 @@ section.dates-display > h3 {
   main,
   footer {
     width: 21cm;
-    margin-bottom: 1rem;
   }
 
   body {
