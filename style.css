@@ -252,6 +252,7 @@ section.dates-display > h3 > span {
 @media print {
   main {
     height: 85rem;
+    background-image: none;
   }
   main > section {
     margin-top: 1rem;
@@ -262,6 +263,9 @@ section.dates-display > h3 > span {
     font-size: 3.5rem;
     grid-template-columns: 3fr 4fr;
     line-height: calc(1rem + 4vw);
+  }
+  main #last-name {
+    color: unset;
   }
   main,
   footer {
@@ -293,6 +297,9 @@ section.dates-display > h3 > span {
     grid-template-columns: repeat(35, 1fr);
     row-gap: 0.55rem;
     width: 70%;
+  }
+  .dates-display > div {
+    color: unset;
   }
   .dates-display > time ~ time::before {
     top: -0.5rem;

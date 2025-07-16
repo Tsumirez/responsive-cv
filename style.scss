@@ -325,7 +325,7 @@ section.dates-display > h3 {
 @media print {
   main {
      height: 85rem;
-
+     background-image: none;
 
     > section {
       margin-top: 1rem;
@@ -339,6 +339,10 @@ section.dates-display > h3 {
       line-height: calc(1rem + 4vw);
     }
     // padding-bottom: 1rem;
+
+    #last-name {
+      color:unset;
+    }
   }
 
   main,
@@ -379,6 +383,10 @@ section.dates-display > h3 {
     grid-template-columns: repeat(35, 1fr);
     row-gap: 0.55rem;
     width: 70%;
+
+    > div {
+      color:unset;
+    }
 
     > time ~ time::before {
       top: -0.5rem;
